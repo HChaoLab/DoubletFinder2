@@ -74,10 +74,10 @@ doubletFinder <- function(seu,
     real.cells <- rownames(seu@meta.data)
     if ("LayerData" %in% getNamespaceExports("Seurat")) {
     # Seurat v5
-    counts <- Seurat::LayerData(seu, assay = "RNA", layer = "counts")
+    #counts <- Seurat::LayerData(seu, assay = "RNA", layer = "counts")
   } else {
     # Seurat v4
-    counts <- Seurat::GetAssayData(seu, assay = "RNA", slot = "counts")
+    counts <- GetAssayData(seu, assay = "RNA", slot = "counts")
   }
     data <- counts[, real.cells]
     n_real.cells <- length(real.cells)
