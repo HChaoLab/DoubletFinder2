@@ -72,11 +72,13 @@ doubletFinder <- function(seu,
   } else {
     ## Make merged real-artifical data
     real.cells <- rownames(seu@meta.data)
-    if (SeuratObject::Version(seu)>= '5.0') {
-         counts <- LayerData(seu, assay = "RNA", layer = "counts")
-    } else {
-         counts <- GetAssayData(object = seu, assay = "RNA", slot = "counts")
-    }
+    if ("LayerData" %in% getNamespaceExports("Seurat")) {
+    # Seurat v5
+    counts <- Seurat::LayerData(seu, assay = "RNA", layer = "counts")
+  } else {
+    # Seurat v4
+    counts <- Seurat::GetAssayData(seu, assay = "RNA", slot = "counts")
+  }
     data <- counts[, real.cells]
     n_real.cells <- length(real.cells)
     n_doublets <- round(n_real.cells/(1 - pN) - n_real.cells)
