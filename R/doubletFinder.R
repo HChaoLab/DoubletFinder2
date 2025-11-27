@@ -34,9 +34,6 @@
 #' classifications.
 #' @author Chris McGinnis
 #' @export
-#' @importFrom Seurat GetAssayData Cells CreateSeuratObject NormalizeData
-#'   FindVariableFeatures ScaleData RunPCA SCTransform
-#' @importFrom SeuratObject LayerData
 #' @examples
 #'
 #' data(pbmc_small)
