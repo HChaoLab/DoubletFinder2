@@ -39,11 +39,11 @@ paramSweep <- function(seu, PCs=1:10, sct = FALSE, num.cores=1) {
   ## Extract pre-processing parameters from original data analysis workflow
   orig.commands <- seu@commands
 
- #if (SeuratObject::Version(seu)>= '5.0') {
-  #    counts <- LayerData(seu, assay = "RNA", layer = "counts")
-  #} else {
+ if (SeuratObject::Version(seu)>= '5.0') {
+      counts <- LayerData(seu, assay = "RNA", layer = "counts")
+  } else {
      counts <- GetAssayData(object = seu, assay = "RNA", slot = "counts")
-  #}
+  }
 
   ## Down-sample cells to 10000 (when applicable) for computational effiency
   if (nrow(seu@meta.data) > 10000) {
